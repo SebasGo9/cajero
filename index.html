@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+  <link rel="stylesheet" href="file:///C:/laragon/www/cajero/interfasotrosvalores.html">
+  <link rel="stylesheet" href="file:///C:/laragon/www/cajero/opciones.html">
+  <link rel="stylesheet" href="file:///C:/laragon/www/cajero/interfasotrosvalores.html">
+  <title>Ingresar Valor</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: rgb(31, 9, 58);
+      color: #fff;
+      font-family: 'Roboto';
+    }
+    .valor-retiro {
+      text-align: center;
+      margin-top: 50px;
+      border-radius: 10%;
+    }
+    .valor-retiro input[type="text"] {
+      padding: 10px;
+      font-size: 16px;
+      width: 200px;
+      margin-bottom: 20px;
+      text-align: center;
+      border-radius: 10%;
+    }
+    
+    .valor-retiro button {
+      padding: 15px 25px;
+      font-size: 18px;
+      background-color: #727577;
+      color: #fff;
+      border: 2px solid #f9fbfd;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 5px;
+      transition: background-color 0.3s, color 0.3s;
+      border-radius: 10%;
+      font-family: 'Roboto';
+    }
+    .valor-retiro button:hover {
+      background-color: #26a69a;
+      color: white;
+    }
+    #marcaAgua {
+      text-align: center;
+      opacity: 0.1;
+      pointer-events: none;
+      position: absolute;
+      width: 100%;
+      bottom: 20px;
+      z-index: 0;
+      top: 30%;
+      left: 50%;
+      transform: translate(-80%,-40%);
+    }
+    #mostrarImagenes{
+     background-color: #26a69a;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 9px;
+            cursor: pointer;
+            margin-top: 30px;
+            font-family: 'Roboto';
+            top: 80%;
+            left: 5%;
+            transform: translate(-150%, -0.5%);
+    }
+  </style>
+</head>
+<body>
+  <h2 id="saldoDisplay"></h2>
+  <div class="valor-retiro">
+    <h2>Ingresar Valor</h2>
+    <input type="text" id="monto" placeholder="Ingrese el monto" readonly>
+    <br>
+    <button onclick="agregarNumero(1)">1</button>
+    <button onclick="agregarNumero(2)">2</button>
+    <button onclick="agregarNumero(3)">3</button>
+    <button onclick="borrarNumero()">🡄</button> 
+    <br>
+    <button onclick="agregarNumero(4)">4</button>
+    <button onclick="agregarNumero(5)">5</button>
+    <button onclick="agregarNumero(6)">6</button>
+    <button onclick="cancelar()">𝐗</button>
+    <br>
+    <button onclick="agregarNumero(7)">7</button>
+    <button onclick="agregarNumero(8)">8</button>
+    <button onclick="agregarNumero(9)">9</button>
+    <button onclick="agregarNumero(0)">0</button>   
+    <br>
+    <button onclick="regresar()">Regresar</button>
+    <button onclick="aceptarTransaccion()">Aceptar</button>
+    <br>
+    <div id="marcaAgua">
+      <img src="marca_de_agua.png" alt="billetes" width="400">
+    </div>
+  </div>
+  <script>
+      function VolverMenu() {
+         window.location.href = "file:///C:/laragon/www/cajero/opciones.html";
+      }
+  </script>
+  <script>
+    let saldo = 2000000; 
+    var montoInput = document.getElementById("monto");
+    var actualizarSaldo = montoInput-saldo;
+
+    function enviarValor() {
+      var valor = document.getElementById('montoInput').value;
+      localStorage.setItem('montoInput', valor);
+      window.location.href = 'file:///C:/laragon/www/cajero/interfasotrosvalores.html';
+    }
+
+    function agregarNumero(numero) {
+      montoInput.value += numero;
+      console.log( montoInput.value)
+      valorIngresado = parseInt(montoInput.value);
+    }
+
+    function borrarNumero() {
+      montoInput.value = montoInput.value.slice(0, -1);
+      valorIngresado = parseInt(montoInput.value);
+    }
+
+    function regresar() {
+      window.location.href = "opciones.html";
+    }
+
+    function aceptarTransaccion() {
+      window.location.href ="file:///C:/laragon/www/cajero/interfasotrosvalores.html";
+    }
+ </script>
+  <script>
+   
+</script>
+</body>
+</html>
