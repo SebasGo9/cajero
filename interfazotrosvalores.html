@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="file:///C:/laragon/www/cajero/interfasotrosvalores.html">
+    <link rel="preconnect" href="file:///C:/laragon/www/cajero/opciones.html">
+    <title>Retiro de Fondos</title>
+    <style>
+        body {
+            background-color: #13072E;
+            color: white;
+            font-family: 'Roboto';
+            text-align: center;
+        }
+
+        .billete-img {
+            width: 380px;
+            height: 190px;
+            margin: 1%;
+            justify-content: center;
+            align-items: normal;
+            flex-wrap: wrap;
+            top:auto;
+            flex: 1;
+            display: -moz-inline-box;
+        }
+        #TotalRetirado{
+            background-color: #26a69a;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 9px;
+            cursor: pointer;
+            margin-top: 30px;
+            font-family: 'Roboto';
+            top: 80%;
+            left: 5%;
+            transform: translate(-150%, -0.5%);
+        }
+        button {
+            background-color: #26a69a;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-family:'Roboto';
+            position: relative; 
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <script>
+    let saldo = 2000000;
+    var valor = localStorage.getItem('montoInput');
+</script>
+    <h1>Retiro de Fondos</h1>
+        <button id="mostrarImagenes" onclick="mostrarImagenes()">Ver Billetes</button>
+        <button id="VolveralMenu" onclick="VolverMenu()">Volver al Menu</button> 
+    <div id="imagenes-billetes" style="display: none;">
+        <img src="billete100.png" alt="Billete 4" class="billete-img" data-valor="100000">
+        <img src="billete50.png" alt="Billete 3" class="billete-img" data-valor="50000">
+        <img src="billete20.png" alt="Billete 1" class="billete-img" data-valor="20000">
+        <img src="billete10.png" alt="Billete 0" class="billete-img" data-valor="10000">
+        
+    </div>
+    <div>
+        <p id="montoInput">Total: <span id="montoInput"></span></p>
+    <p id="montoInput">Valor retirado: <span id="montoInput"></span></p>
+    </script>
+    </div>
+    <script>
+        function valor(){
+            document.getElementById('montoInput').textContent = valor;
+   console.log(valor);
+        }
+     
+   function VolverMenu() {
+           window.location.href = "file:///C:/laragon/www/cajero/opciones.html";
+        }
+        function mostrarImagenes() {var imagenesDiv = document.getElementById("imagenes-billetes");
+            imagenesDiv.style.display = "block";
+        }
+        function sumarBilletes() {
+            var valor = parseInt(document.getElementById('montoInput').value);
+            var total = 0;
+            document.querySelectorAll('.montoInput').forEach(function(billete) {
+                var valorBillete = parseInt(billete.getAttribute('data-valor'));
+                if (valorIngresado >= valorBillete) {
+                    var cantidad = Math.floor(valor / valorBillete);
+                    total += cantidad;
+                    valorIngresado %= valorBillete;
+                }
+            });
+            document.getElementById('montoInput').textContent = total;
+            
+        }
+    </script>
+</body>
+
+</html>
